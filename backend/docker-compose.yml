@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+    nginx-prod:
+        build:
+            context: .
+            dockerfile: nginx.dockerfile
+            args:
+                AMBIENTE: "PRODUCCION"
+                APACHE: "www-data"
+                USER: ${USER}
+                CUSTOMUID: $CUSTOMUID
+                CUSTOMGID: $CUSTOMGID
+        container_name: nginx-yobel
+        depends_on:
+            - yobel-prod
+        ports: 
+            - 8081:8081  
+        networks: 
+            raul_network:
+                aliases: 
+                    - nginx-yobel   
+    yobel-prod:
+        image: yobel/prod
+        build:
+            context: .
+            dockerfile: yobel.dockerfile
+            args:
+                AMBIENTE: "PRODUCCION"
+                APACHE: "www-data"
+                USER: ${USER}
+                CUSTOMUID: ${CUSTOMUID}
+                CUSTOMGID: ${CUSTOMGID}
+        container_name: yobel-prod
+        volumes:
+            - ~/.ssh/:/root/.ssh/
+        environment:
+            - AMBIENTE=DESARROLLO  
+            - APACHE_DOCUMENT_ROOT=/var/www/public 
+        networks: 
+            raul_network:
+                aliases: 
+                    - yobel-prod    
+        tty: true
+networks: 
+    raul_network:
+        name: raul_net
+        driver: bridge
+        ipam:
+            driver: default 

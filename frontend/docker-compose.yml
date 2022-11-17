@@ -1,0 +1,28 @@
+version: "3.7"
+services: 
+    yobel-frontend:
+        build:
+            context: .
+            dockerfile: angular.dockerfile
+            args:
+                AMBIENTE: "PRODUCCION"
+                APACHE: "www-data"
+                USER: ${USER}
+                CUSTOMUID: $CUSTOMUID
+                CUSTOMGID: $CUSTOMGID
+        container_name: yobel-frontend
+        volumes:
+            - ~/.ssh/:/root/.ssh/
+        networks: 
+            raul_network:
+                aliases: 
+                    - yobel-frontend    
+        ports:
+            - "8082:8082"        
+        tty: true
+networks: 
+    raul_network:
+        name: raul_net
+        driver: bridge
+        ipam:
+            driver: default
