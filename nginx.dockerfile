@@ -15,4 +15,4 @@ RUN echo "APACHE: ${APACHE}"
 #INSTALAR LIBRERIAS UBUNTU
 RUN apt-get update && apt-get install -y vim iputils-ping telnet vim
 # USAR CONFIGURACION NGINX
-COPY ./deploy/nginx /etc/nginx/conf.d
+COPY ./backend/deploy/nginx /etc/nginx/conf.d
