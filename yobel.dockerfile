@@ -28,7 +28,7 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 #INSTALAR COMPOSER GLOBALMENTE COPIAR EL CODIGO Y SETEA EL DIRECTORIO DE TRABAJO
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #COMANDOS PROPIOS PARA EL MADSIS
-COPY --chown=$APACHE:$APACHE ./ /var/www
+COPY --chown=$APACHE:$APACHE ../ /var/www
 WORKDIR /var/www
 RUN composer install
 RUN php artisan key:generate
