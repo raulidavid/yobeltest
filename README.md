@@ -17,8 +17,9 @@ Tecnologías usadas en el software
 
 ```sh
 git clone https://github.com/raulidavid/yobeltest.git
-
 CUSTOMUID=$(id -u) CUSTOMGID=$(id -g) docker-compose -f docker-compose.yml up --build -d --remove-orphans
+check backend http://localhost:8081
+check frontend http://localhost:8082
 ```
 
 ## License
