@@ -1,17 +1,12 @@
+
 <div class="container">
   <div class="row mt-4">
     <div class="col-12 text-center">
       <h1>CRUD BASE RAÚL FLORES</h1>
+      <a target="_blank" href="https://www.linkedin.com/in/raúl-david-flores-serrano-45a4bb166/">linkedin</a>
     </div>
     <div class="col-12">
-      <h1>algun titulo</h1>
-      <app-modal #modal [active]="isActive">
-        
-        <p>algun contenido</p>
-        <button class="btn btn-primary" (click)="closeModal(modal)">
-          Agregar Pedido
-        </button>
-      </app-modal>
+      <button class="btn btn-primary"  (click)="openModal(modal)" >Agregar Pedido</button>
     </div>
     <div class="col-12">
       <table class="table">
@@ -20,18 +15,42 @@
             <th scope="col">Fecha</th>
             <th scope="col">Código</th>
             <th scope="col">Cliente</th>
-            <th scope="col">Editar</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let pedido of pedidos">
             <td>{{pedido.id}}</td>
-            <td>{{pedido.title}}</td>
-            <td>{{pedido.body}}</td>
-            <td></td>
+            <td>{{pedido.code}}</td>
+            <td>{{pedido.client}}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-modal #modal [active]="isActive">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Fecha:</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la fecha">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Código:</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Código Cliente">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Cliente</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Cliente">
+        </div>
+        <button  class="btn btn-primary" (click)="savePedido()">
+          Guardar Pedido
+        </button>
+        <button class="btn btn-danger" (click)="closeModal(modal)">
+          Cerrar
+        </button>
+      </app-modal>
     </div>
   </div>
 </div>

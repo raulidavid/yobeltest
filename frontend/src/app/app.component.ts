@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ModalComponent } from 'src/modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  public response: any[]=[];
   public pedidos: any[] = [];
   public isActive: boolean;
   title = 'frontend';
 
   constructor(private http: HttpClient) {
-    this.http.get<any>('https://jsonplaceholder.typicode.com/posts').subscribe(data => {
+    this.http.get<any>('http://localhost:8081/api/pedidos').subscribe(data => {
         this.pedidos = data;
         console.log(this.pedidos);
     });
     this. isActive = false;
-
   }
   
 
@@ -29,7 +29,11 @@ export class AppComponent {
   closeModal(value:any) {
     value.active = false
   }
-  modalAddPedido(){
 
+  savePedido(){
+    this.http.post<any>('http://localhost:8081/api/pedidos', { title: 'Angular POST Save Pedido' }).subscribe(data => {
+      alert(data.message);
+    })
+    
   }
 }

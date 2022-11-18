@@ -11,9 +11,5 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
    
   }
-
-  pepito() {
-    console.log("algo")
-  }
  
 }
