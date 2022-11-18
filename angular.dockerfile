@@ -8,4 +8,4 @@ COPY . /app
 WORKDIR /app/frontend
 RUN npm install
 EXPOSE 8082
-#CMD ng serve
+CMD ng serve
