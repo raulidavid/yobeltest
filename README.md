@@ -1,6 +1,6 @@
 ## TEST RAUL FLORES YOBEL®
 
-Sistema base de un CRUD de pedidos
+Sistema base de un CRUD de pedidos debe ejecutarse en linux ubuntu o a su vez en windows habilitado wsl2
 
 ## DEPENDENCIES AND LIBRARIES
 
@@ -8,6 +8,7 @@ Tecnologías usadas en el software
 
 | DEPENDENCY | LINK |
 | ------ | ------ |
+| UBUNTU >= 20.04 | [LINUX UBUNTU](https://ubuntu.com) |
 | PHP >= 8.1 | [PHP](https://www.php.net/manual/es/intro-whatis.php) |
 | MARIADB >= 10.0 | [MARIADB](https://www.mariadb.org/)  |
 | DOCKER >= 20.10.10 | [DOCKER](https://www.docker.com/) |
